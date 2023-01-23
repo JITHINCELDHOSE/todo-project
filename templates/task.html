@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="bg-success p-2 text-dark bg-opacity-50">
+    <div class="border border-success p-2 mb-2 border-opacity-75">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner">
+                        <div class="banner-text">
+                            <h1>ToDo</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>&nbsp;Add Task</h4>
+                                <form method="post" class="shadow-lg p-3 mr-5 bg-white rounded">
+                                {% csrf_token %}
+                                    <nav class="navbar navbar-dark bg-dark" style="background-color: #e3f2fd;">
+                                        <span class="navbar-text">
+                                            Product Details and Update Panel
+                                        </span>
+                                    </nav>
+                                    <br>
+                                    <div class="form-group">
+                                    <input type="text" name="name" class="form-control" class="span2" placeholder="Name of the Task"><br>
+                                    </div>
+                                    <div class="form-group">
+                                    <input type="text" name="priority" class="form-control" class="span2" placeholder="Yours Priority"><br>
+                                    </div>
+                                    <div class="form-group">
+                                    <input type="text" name="date" class="form-control" class="span2" placeholder="Updating Date"><br>
+                                    </div>
+                                    <input type="SUBMIT" class="btn btn-success">
+                                    </form>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Available Items</h4><br>
+                            {% for i in obj1 %}
+<!--                        <div class="row">-->
+                                <div class="shadow-lg p-3 ml-6 bg-light rounded">
+
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <h5 class="card-title"> {{i.name}}&nbsp;</h5>
+                                                <p><b>{{i.priority}}</b></p>
+                                                <p><b>{{i.date}}</b></p>
+                                            </div>
+                                                <p><b><a class="btn btn-danger" href="{% url 'delete' i.id %}">Delete</a>&nbsp;&nbsp;
+                                                      <a class="btn btn-success" href="{% url 'update' i.id %}">Update</a>&nbsp;&nbsp;
+                                                      <a class="btn btn-info" href="{% url 'cbvdetail' i.id %}">Details</a></b></p>
+                                        </div>
+                                    </div><br>
+                                        {% endfor %}
+                                </div>
+
+<!--                            </div>-->
+                        </div>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
